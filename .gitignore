@@ -1,0 +1,24 @@
+# System (Windows)
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+
+# Archives / files / pictures
+*.zip
+*.7z
+*.rar
+*.tar
+*.gz
+*.iso
+
+# Temp and logs
+*.log
+*.tmp
+*.temp
+
+# Other
+*.htm
+*.html
+*.eml
