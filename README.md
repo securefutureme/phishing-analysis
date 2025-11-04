@@ -53,13 +53,53 @@ Phishing jest to metoda oszustwa opierająca się na **„podszywaniu”** się 
 
 ---
 
-### Co znajdziesz
-- rozszerzoną analizę case-by-case (`documentation/`),
-- treści i nagłówki maila (`analysis/`),
-- zrzuty ekranu (`screenshots/`),
-
 **Workflow:**  
 VM → eksport maili phishingowych → eksport treści/nagłówków → analiza wedle schematu → toole analizujące adresy IP i linki → **Tabela IOC**
+
+**Słowniczek:**
+- **ARC (Authenticated Received Chain)** – łańcuch podpisów dodawanych przez kolejne bramy pocztowe, pozwala zachować wyniki uwierzytelniania po przekazaniu/forwardzie.
+- **ASN (Autonomous System Number)** – numer systemu autonomicznego w routingu Internetu; pomaga kojarzyć IP z operatorem/hostingiem.
+- **Authentication-Results** – nagłówek raportujący wyniki SPF/DKIM/DMARC u odbiorcy.
+- **Base64** – sposób kodowania binariów (np. obrazków) w treści e-mail (MIME).
+- **Brand impersonation** – podszywanie się pod markę (nazwa, logo, styl).
+- **CTA (Call to Action)** – element w treści zachęcający do kliknięcia (np. „Pokaż moje opcje”).
+- **Credential phishing** – wyłudzanie poświadczeń (login/hasło) zwykle przez fałszywe strony logowania.
+- **DKIM (DomainKeys Identified Mail)** – podpis kryptograficzny treści wiadomości, weryfikowany kluczem z DNS.
+- **DMARC (Domain-based Message Authentication, Reporting and Conformance)** – polityka nadawcy określająca jak odbiorca ma traktować maile niezgodne ze SPF/DKIM (np. p=none/quarantine/reject).
+- **Display-name spoofing** – nadużycie wyświetlanej nazwy nadawcy (np. „DPD Support”) przy innym, faktycznym adresie.
+- **Domain mismatch / brand-domain mismatch** – rozjazd marki w treści z faktyczną domeną nadawcy lub linku.
+- **Envelope-From / Mail From** – techniczny adres nadawcy używany w warstwie SMTP (widoczny np. w Return-Path), może różnić się od From:.
+- **ESMTP / ESMTPSA** – rozszerzony SMTP; ESMTPSA to uwierzytelnione TLS-owe nadanie przez klienta do serwera.
+- **Forwarder / listserwer** – pośrednik przekazujący wiadomości dalej; może modyfikować nagłówki i wyniki SPF.
+- **Gateway / MTA (Mail Transfer Agent)** – serwer pośredniczący w przyjmowaniu i dalszym wysyłaniu poczty (np. Postfix).
+- **Header (nagłówek)** – metadane e-mail (From, To, Subject, Received itd.).
+- **HTML-part / text-part** – części wieloczęściowego (MIME) maila: HTML i zwykły tekst (multipart/alternative).
+- **IOC (Indicator of Compromise)** – wskaźnik naruszenia: domena, IP, URL, fraza, temat itd.
+- **IP reputation / blacklist** – ocena zaufania do adresu IP, użyteczna w filtrowaniu spamu.
+- **Link wrapper (np. www.google.com/url?q=…)** – pośredni adres maskujący właściwy cel linku.
+- **MIME (Multipurpose Internet Mail Extensions)** – standard opakowania treści e-mail (format, załączniki).
+- **MTA-STS / TLS **– mechanizmy wymuszania bezpiecznego dostarczania poczty; TLS szyfruje transport.
+- **MX (Mail eXchanger)** – rekord DNS wskazujący serwer przyjmujący pocztę dla domeny.
+- **Outlook/Word VML** – specyficzne znaczniki MS Office w HTML e-mail; częsty znak „ręcznie klejonych” szablonów.
+- **Pipeline (łańcuch dostarczenia)** – kolejność serwerów z Received: (host źródłowy → bramy pośrednie → serwer odbiorcy).
+- **PIXEL / tracking pixel** – niewidoczny obraz (często z unikalnym ID) do śledzenia otwarć wiadomości.
+- **Quarantine / reject (DMARC)** – akcje zalecane odbiorcy wobec niezgodnych wiadomości (kwarantanna lub odrzucenie).
+- **Received** – nagłówek dodawany przez każdy serwer po drodze; służy do rekonstrukcji trasy maila.
+- **Return-Path** – adres zwrotny (bounce), zwykle odpowiada envelope-from; często ujawnia rzeczywistego nadawcę.
+- **Sandbox / podgląd** – bezpieczne środowisko do analizy treści wiadomości i linków.
+- **SendGrid / ESP (Email Service Provider)** – komercyjna platforma wysyłkowa; często nadużywana w kampaniach.
+- **SHA-1 / SHA-256** – funkcje skrótu; w DKIM zalecany jest SHA-256 (SHA-1 uznawany za przestarzały).
+- **Shared hosting / VPS** – współdzielony hosting vs. prywatny serwer wirtualny; często tło kampanii phishingowych.
+- **SOC (Security Operations Center)** – zespół operacyjny bezpieczeństwa, reagujący na incydenty.
+- **SPF (Sender Policy Framework)** – mechanizm sprawdzania, czy dany IP może wysyłać pocztę dla domeny.
+- **Subject obfuscation** – zaciemnianie tytułu (emoji, kodowanie =?UTF-8?B?...?=) w celu ominięcia filtrów/uwagi.
+- **Tenant impersonation** – podszywanie się pod dzierżawcę/usługę (np. portal firmowy, skrzynka) bez użycia jego domeny.
+- **Threat actor / atakujący** – podmiot prowadzący kampanię.
+- **TTL (Time To Live)** – czas ważności odpowiedzi DNS; krótki TTL ułatwia szybkie rotacje.
+- **URL / Effective URL** – adres docelowy po przekierowaniach; istotny w analizie celu kampanii.
+- **urlscan.io / VirusTotal / WHOIS / MXToolbox** – narzędzia OSINT do analizy stron, reputacji, rejestracji, konfiguracji poczty.
+- **VERP / track ID** – unikalny identyfikator w adresie/ścieżce do śledzenia kampanii i odbiorców.
+- **VPS/host źródłowy** – komputer kliencki lub serwer, z którego nastąpiło uwierzytelnione nadanie (często widoczne w najniższym Received).
 
 ---
 
@@ -67,7 +107,9 @@ VM → eksport maili phishingowych → eksport treści/nagłówków → analiza 
 - **Niektóre dane, jak mój adres mailowy i inne zostały usunięte, z powodów prywatnych.**
 - **Ten projekt jest ćwiczeniem obrazującym moje umiejętności analizy maila phishingowego po odbyciu kursu Szkoła Security.**
 
----</p>
+---
+
+</p>
 
 </details>
 
@@ -123,21 +165,61 @@ Phishing is a social-engineering technique where an attacker **impersonates** a 
 
 ---
 
-### What you'll find
-- case-by-case comprehensive analysis (`documentation/`),
-- email content and headers (`analysis/`),
-- screenshots (`screenshots/`),
-
 **Workflow:**  
 VM --> export phishing emails --> export content/headers --> analysis by schema --> tools to assess IPs and links --> **IOC Table**
 
+**Glossary:**  
+- **ARC (Authenticated Received Chain)** – a chain of signatures added by mail gateways to preserve authentication results across forwarding.
+- **ASN (Autonomous System Number)** – an Internet routing identifier that links IP ranges to an operator/hosting provider.
+- **Authentication-Results** – a header reporting the recipient’s SPF/DKIM/DMARC results.
+- **Base64** – a way to encode binaries (e.g., images) inside email (MIME).
+- **Brand impersonation** – pretending to be a brand (name, logo, style).
+- **CTA (Call to Action)** – an element prompting a click (e.g., “Show my options”).
+- **Credential phishing** – stealing credentials (login/password), usually via fake login pages.
+- **DKIM (DomainKeys Identified Mail)** – a cryptographic signature of the message, verified with a DNS key.
+- **DMARC (Domain-based Message Authentication, Reporting and Conformance)** – a sender policy telling receivers how to treat mail failing SPF/DKIM (e.g., p=none/quarantine/reject).
+- **Display-name spoofing** – abusing the visible sender name (e.g., “DPD Support”) while using a different actual address.
+- **Domain mismatch / brand-domain mismatch** – brand shown in content doesn’t match the real sender or link domain.
+- **Envelope-From / Mail From** – the SMTP-layer sender address (shows in Return-Path), can differ from `From:`.
+- **ESMTP / ESMTPSA** – Extended SMTP; ESMTPSA is authenticated TLS submission from client to server.
+- **Forwarder / list server** – an intermediary that forwards mail and may alter headers/auth results.
+- **Gateway / MTA (Mail Transfer Agent)** – a mail relay server (e.g., Postfix).
+- **Header** – email metadata (From, To, Subject, Received, etc.).
+- **HTML-part / text-part** – the HTML and plain-text parts of a multipart (MIME) email.
+- **IOC (Indicator of Compromise)** – an indicator such as a domain, IP, URL, phrase, or subject.
+- **IP reputation / blacklist** – trust/abuse rating for an IP; used in spam filtering.
+- **Link wrapper (e.g., `www.google.com/url?q=…`)** – an intermediate URL that masks the real destination.
+- **MIME (Multipurpose Internet Mail Extensions)** – the standard for packaging email content/attachments.
+- **MTA-STS / TLS** – mechanisms to enforce secure mail delivery; TLS encrypts transport.
+- **MX (Mail eXchanger)** – DNS record pointing to a domain’s inbound mail server.
+- **Outlook/Word VML** – Microsoft-specific HTML tags; often seen in hand-built email templates.
+- **Pipeline (delivery chain)** – the order of servers in `Received:` (source host → intermediaries → recipient server).
+- **PIXEL / tracking pixel (1×1)** – an invisible image (often with a unique ID) to track opens.
+- **Quarantine / reject (DMARC)** – receiver actions recommended for noncompliant mail.
+- **Received** – a header added by each server along the path; used to reconstruct the route.
+- **Return-Path** – bounce address (envelope-from); often reveals the true sender domain.
+- **Sandbox / preview** – a safe environment to inspect emails and links.
+- **SendGrid / ESP (Email Service Provider)** – a commercial bulk-mail platform; often abused in campaigns.
+- **SHA-1 / SHA-256** – hash functions; DKIM should use SHA-256 (SHA-1 is considered obsolete).
+- **Shared hosting / VPS** – shared web hosting vs. a virtual private server; common for phishing infrastructure.
+- **SOC (Security Operations Center)** – a team that handles security monitoring and incidents.
+- **SPF (Sender Policy Framework)** – checks whether an IP is authorized to send mail for a domain.
+- **Subject obfuscation** – disguising the subject (emoji, `=?UTF-8?B?...?=`) to dodge filters or attention.
+- **Tenant impersonation** – posing as a tenant/service (e.g., company portal/mailbox) without using its domain.
+- **Threat actor / attacker** – the entity running the campaign.
+- **TTL (Time To Live)** – DNS record lifetime; short TTL enables fast rotations.
+- **URL / Effective URL** – the final destination after redirects; key for analyzing the campaign’s goal.
+- **urlscan.io / VirusTotal / WHOIS / MXToolbox** – OSINT tools for page analysis, reputation, registration, and mail config.
+- **VERP / track ID** – unique identifier in an address/path for tracking a campaign and recipients.
+- **VPS / source host** – the client or server from which the message was submitted (often seen in the lowest `Received`).
 ---
 
 ### INFO
 - **Some data (e.g., my email address) has been removed for privacy reasons.**
 - **This project demonstrates my phishing-email analysis skills after completing the “Szkoła Security” course.**
 
----</p>
+---
+</p>
 
 </details>
 
