@@ -1,6 +1,6 @@
 # Email 05 - Phishing "zwodniczy", jako technika phishingu
 
-**************--------------------------------------------------------mail pochodzący z monkey.org-----------------------------------------------------------**************
+### Źródło: [www.monkey.org](https://monkey.org/~jose/phishing/)
 
 O tę próbkę zahaczyłem, przeglądając jeden z najbardziej znanych publicznych zbiorów phishingu — Jose Nazario phishing corpus. To świetny materiał treningowy dla SOC - setki realnych kampanii, które pozwalają ćwiczyć umiejętności analityczne bez ryzyka dotykania żywej infrastruktury ofiary. Wiadomość, jak zwykle, otworzyłem w izolowanym środowisku. Na pierwszy rzut oka przywołuje dobrze znany motyw **odnowienia subskrypcji**:
 
