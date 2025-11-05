@@ -1,6 +1,6 @@
 # Email 02 - Credential Harvesting
 
-**Email used from malware-traffic-analysis.net ------- For training / educational purposes only**
+### Source: www.malware-traffic-analysis.net
 
 Starting the analysis of an email pulled from an excellent site that hosts collections of malware and phishing emails (which is an amazing resource for anyone looking to practice the analytical skills needed for SOC and beyond), we can see right away that the message was crafted to grab our attention. If we put ourselves in the shoes of a regular user who opens their inbox and receives such an email (assuming we’re familiar with malware-traffic-analysis.net), we’re told that the message came from the site’s Support team.
 
