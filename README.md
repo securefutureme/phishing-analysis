@@ -76,7 +76,7 @@ VM → eksport maili phishingowych → eksport treści/nagłówków → analiza 
 - **HTML-part / text-part** – części wieloczęściowego (MIME) maila: HTML i zwykły tekst (multipart/alternative).
 - **IOC (Indicator of Compromise)** – wskaźnik naruszenia: domena, IP, URL, fraza, temat itd.
 - **IP reputation / blacklist** – ocena zaufania do adresu IP, użyteczna w filtrowaniu spamu.
-- **Link wrapper (np. www.google.com/url?q=…)** – pośredni adres maskujący właściwy cel linku.
+- **Link wrapper (np. `www.google.com/url?q=…`)** – pośredni adres maskujący właściwy cel linku.
 - **MIME (Multipurpose Internet Mail Extensions)** – standard opakowania treści e-mail (format, załączniki).
 - **MTA-STS / TLS **– mechanizmy wymuszania bezpiecznego dostarczania poczty; TLS szyfruje transport.
 - **MX (Mail eXchanger)** – rekord DNS wskazujący serwer przyjmujący pocztę dla domeny.
@@ -108,6 +108,13 @@ VM → eksport maili phishingowych → eksport treści/nagłówków → analiza 
 - **Ten projekt jest ćwiczeniem obrazującym moje umiejętności analizy maila phishingowego po odbyciu kursu Szkoła Security.**
 
 ---
+### ŹRÓDŁA
+Fragmenty danych / przykłady wiadomości e-mail pochodzą z:
+- [Malware Traffic Analysis](https://www.malware-traffic-analysis.net/)
+- [Monkey.org - Jose Nazario Corpus](https://monkey.org/~jose/phishing/)
+
+– użyte wyłącznie do celów edukacyjnych i treningowych, zgodnie z informacją opublikowaną na stronie źródłowej, za pozwoleniem właścicieli.
+
 
 </p>
 
@@ -219,6 +226,12 @@ VM --> export phishing emails --> export content/headers --> analysis by schema 
 - **This project demonstrates my phishing-email analysis skills after completing the “Szkoła Security” course.**
 
 ---
+Fragments of data / example email messages come from:
+
+- [Malware Traffic Analysis](https://www.malware-traffic-analysis.net/)
+- [Monkey.org - Jose Nazario Corpus](https://monkey.org/~jose/phishing/)
+
+— used exclusively for educational and training purposes, in accordance with the information published on the source websites and with the owners’ permission.
 </p>
 
 </details>
