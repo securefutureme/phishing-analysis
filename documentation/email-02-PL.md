@@ -1,6 +1,6 @@
 # Email 02 - Wyłudzenie danych logowania
 
-**Mail użyty z malware-traffic-analysis.net ------- Użycie tylko dla celów treningowych / edukacyjnych**
+### Źródło: www.malware-traffic-analysis.net
 
 Biorąc się do analizy maila pobranego z świetnej strony ze zbiorem malware i maili phishingowych (co jest niesamowitym wsparciem dla każdego, kto chce trenować swoje umiejętności analityczne potrzebne do SOC i nie tylko), widzimy od razu, że mail został skonstruowany tak, żeby przyciągnąć naszą uwagę. Jakbyśmy zamienili się w zwykłego użytkownika, który otwiera skrzynkę mailową i dostaje takiego maila (zakładając, że korzystamy ze strony malware-traffic-analysis.net), dostajemy informację, że mail przyszedł z Supportu znanej nam strony.
 
