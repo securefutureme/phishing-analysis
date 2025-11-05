@@ -1,6 +1,6 @@
 # Email 05 — Deceptive phishing
 
-**************------------------------------------------------------mail originating from monkey.org------------------------------------------------------------**************
+### Source: [www.monkey.org](https://monkey.org/~jose/phishing/)
 
 I came across this sample while browsing one of the most famous public phishing collections — the Nazario phishing corpus. It’s excellent training material for SOC teams — hundreds of real campaigns that let you practice analytical skills without the risk of touching a live victim infrastructure. As usual, I opened the message in an isolated environment. At first glance, it invokes the well-known “subscription renewal” theme; however, the email itself is fairly well executed:
 
